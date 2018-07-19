@@ -1,3 +1,5 @@
+# This fork had been modified to use `--force-export` flag to skip the menu when exporting Policy.
+
 # ExportImportPolicyPackage
 Check Point ExportImportPolicyPackage tool enables you to export a policy package from a R80.10 Management database to a .tar.gz file, which can then be imported into any other R80.10 Management database.
 
