@@ -62,6 +62,8 @@ def populate_parser(parser):
                         help="UNSAFE! Ignore certificate verification.")
     parser.add_argument("--unsafe-auto-accept", required=False, action="store_true",
                         help="UNSAFE! Auto accept fingerprint during certificate verification.")
+    parser.add_argument("--force-export", required=False, action="store_true",
+                        help="Skips Menu in favour of Export mode")
     return parser.parse_args()
 
 
@@ -70,7 +72,12 @@ attribute_export_error_num = 1
 
 def process_arguments(parser):
     args = populate_parser(parser)
-    args = Menu(args).self_args
+    # This will skipp the menu if force_export flag is present
+    if args.force_export:
+        args.login = '2'
+    else:
+        args = Menu(args).self_args
+    
     global debug
     global err_msgs
     global log_file
